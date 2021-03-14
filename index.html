@@ -115,6 +115,17 @@
             window.open('/' + document.getElementsByName('q')[0].value);
             return false
         }
+        function externallinks() {
+            if (!document.getElementsByTagName) return;
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                var anchor = anchors[i];
+                if (anchor.getAttribute("href") &&
+                    anchor.getAttribute("rel") == "external")
+                    anchor.target = "_blank";
+            }
+        }
+        window.onload = externallinks;
     </script>
     <title>GitHub 文件加速</title>
 </head>
@@ -137,7 +148,7 @@
         <p>4、分支文件：https://github.com/hunshcn/project/blob/master/filename</p>
     </div>
 </form>
-    <p align="center"><a href="https://sub.bwgrlp.fun">订阅转换服务</a> <a href="https://sub.bwgrlp.fun/updata/">加速服务缓存更新</a></p>
+    <p align="center"><a href="https://sub.bwgrlp.fun" rel="external">订阅转换服务</a> <a href="https://sub.bwgrlp.fun/updata/" rel="external">加速服务缓存更新</a></p>
     <p align="center" style="position: sticky;top: calc(100% - 2.5em);">项目基于Cloudflare Workers  开源于GitHub <a style="color: #3294ea" href="https://github.com/hunshcn/gh-proxy">hunshcn/gh-proxy</a></p>
 </body>
 </html>
